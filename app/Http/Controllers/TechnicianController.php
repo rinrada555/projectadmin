@@ -13,7 +13,7 @@ class TechnicianController extends Controller
      */
     public function index()
     {
-        $technicain = Technicain::orderBy('created_at', 'DESC')->get();
+        $technicain = Technicain::orderBy('created_at', 'ASC')->get();
         $departments = Department::all();
   
         return view('technicains.index', compact('technicain','departments'));
@@ -24,7 +24,8 @@ class TechnicianController extends Controller
      */
     public function create()
     {
-        return view('technicains.create');
+        $departments = Department::all();
+        return view('technicains.create', compact('departments'));
     }
   
     /**
@@ -37,7 +38,7 @@ class TechnicianController extends Controller
             'Tech_Lname' => 'required|max:255',
             'Tech_Address' => 'required|max:255',
             'Tech_Tel' => 'required|max:10',
-            
+            'DepartmentID' => 'required'
         ]);
     
         Technicain::create($validatedData);
@@ -51,8 +52,9 @@ class TechnicianController extends Controller
     public function show(string $id)
     {
         $technicain = Technicain::findOrFail($id);
-  
-        return view('technicains.show', compact('technicain'));
+        $departments = Department::all();
+
+        return view('technicains.show', compact('technicain','departments'));
     }
   
     /**
@@ -61,8 +63,9 @@ class TechnicianController extends Controller
     public function edit(string $id)
     {
         $technicain = Technicain::findOrFail($id);
+        $departments = Department::all();
   
-        return view('technicains.edit', compact('technicain'));
+        return view('technicains.edit', compact('technicain','departments'));
     }
   
     /**
@@ -71,9 +74,15 @@ class TechnicianController extends Controller
     public function update(Request $request, string $id)
     {
         $technicain = Technicain::findOrFail($id);
-  
-        $technicain->update($request->all());
-  
+    $validatedData = $request->validate([
+        'Tech_Fname' => 'required|max:255',
+        'Tech_Lname' => 'required|max:255',
+        'Tech_Address' => 'required|max:255',
+        'Tech_Tel' => 'required|max:10',
+        'DepartmentID' => 'required'
+    ]);
+
+    $technicain->update($validatedData);
         return redirect()->route('technicains')->with('success', 'product updated successfully');
     }
   
