@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TechnicianController;
+use App\Http\Controllers\PromotionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,16 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}', 'edit')->name('technicains.edit');
         Route::put('edit/{id}', 'update')->name('technicains.update');
         Route::delete('destroy/{id}', 'destroy')->name('technicains.destroy');
+    });
+
+    Route::controller(PromotionController::class)->prefix('promotions')->group(function () {
+        Route::get('', 'index')->name('promotions');
+        Route::get('create', 'create')->name('promotions.create');
+        Route::post('store', 'store')->name('promotions.store');
+        Route::get('show/{id}', 'show')->name('promotions.show');
+        Route::get('edit/{id}', 'edit')->name('promotions.edit');
+        Route::put('edit/{id}', 'update')->name('promotions.update');
+        Route::delete('destroy/{id}', 'destroy')->name('promotions.destroy');
     });
  
     Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');
