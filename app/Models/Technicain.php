@@ -13,6 +13,7 @@ class Technicain extends Model
 
     protected $table = 'technicains';
     protected $fillable =[
+        'Tech_ID',
         'Tech_Fname',
         'Tech_Lname',
         'Tech_Address',

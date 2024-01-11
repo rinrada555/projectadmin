@@ -7,12 +7,11 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mb-0">เพิ่มโปรโมชันของคุณ</h1>
+                <h4 class="mb-0">เพิ่มโปรโมชันของคุณ</h4>
                 <hr />
                 <form action="{{ route('promotions.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="container mt-5">
-                        <h1>Add Promotion</h1>
+                    <div class="container">
                         <form action="/promotions" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
@@ -27,7 +26,7 @@
                             <label for="PromotionDetail" class="form-label">รายละเอียดโปรโมชัน</label>
                         <textarea class="form-control" id="promotionDescription" name="PromotionDetail"></textarea>
                         </div>
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="PromotionStartDate" class="form-label">วันที่เริ่ม</label>
                                 <input type="date" class="form-control" id="startDate" name="PromotionStartDate">
@@ -37,7 +36,14 @@
                                 <input type="date" class="form-control" id="endDate" name="PromotionEndDate">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3">ตกลง</button>
+                        <div class="row">
+                            <div class="col-1">
+                                <button class="btn btn-primary">ตกลง</button>
+                            </div>
+                            <div class="col">
+                                <a href="{{ route('promotions') }}" class="btn btn-danger">ยกเลิก</a>
+                            </div>
+                        </div>
                 </form>
             </div>
         </main>

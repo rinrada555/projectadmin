@@ -8,7 +8,7 @@
         <main>
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h1 class="mb-0">ข้อมูลช่าง</h1>
+                    <h4 class="mb-0">ข้อมูลช่าง</h4>
                     <a href="{{ route('technicains.create') }}" class="btn btn-primary">เพิ่มข้อมูลช่าง</a>
                 </div>
                 <hr />
@@ -20,7 +20,7 @@
                 <table class="table table-hover">
                     <thead style="background-color: #011D98; color: white;">
                         <tr>
-                            <th class="w-10">ที่</th>
+                            <th class="w-10">รหัส</th>
                             <th class="w-20">ชื่อ</th>
                             <th class="w-20">นามสกุล</th>
                             <th class="w-10">ที่อยู่</th>
@@ -33,7 +33,7 @@
                         @if($technicain->count() > 0)
                             @foreach($technicain as $rs)
                                 <tr>
-                                    <td class="align-middle">{{ $loop->iteration }}</td>
+                                    <td class="align-middle">{{ $rs->Tech_ID }}</td>
                                     <td class="align-middle">{{ $rs->Tech_Fname }}</td>
                                     <td class="align-middle">{{ $rs->Tech_Lname }}</td>
                                     <td class="align-middle">{{ $rs->Tech_Address }}</td>

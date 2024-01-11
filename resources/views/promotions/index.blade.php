@@ -8,7 +8,7 @@
         <main>
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h1 class="mb-0">โปรโมชัน</h1>
+                    <h4 class="mb-0">โปรโมชัน</h4>
                     <a href="{{ route('promotions.create') }}" class="btn btn-primary">เพิ่มโปรโมชัน</a>
                 </div>
                 <hr />

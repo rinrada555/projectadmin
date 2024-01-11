@@ -34,11 +34,14 @@ class TechnicianController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'Tech_ID' => 'required|max:4|unique:technicains',
             'Tech_Fname' => 'required|max:255',
             'Tech_Lname' => 'required|max:255',
             'Tech_Address' => 'required|max:255',
             'Tech_Tel' => 'required|max:10',
             'DepartmentID' => 'required'
+        ],[
+            'Tech_ID.unique' => 'ไม่สามารถใช้รหัสนี้ได้ รหัสนี้มีอยู่แล้วในระบบแล้ว' // ข้อความ error สำหรับการซ้ำ
         ]);
     
         Technicain::create($validatedData);

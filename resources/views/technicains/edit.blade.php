@@ -7,11 +7,28 @@
 <div id="layoutSidenav_content">
 <main>
     <div class="container-fluid">
-    <h1 class="mb-0">Edit Product</h1>
+    <h4 class="mb-0">แก้ไขข้อมูลช่าง</h4>
     <hr />
     <form action="{{ route('technicains.update', $technicain->id) }}" method="POST">
         @csrf
         @method('PUT')
+        <div class="row mb-3">
+            <div class="col-2">
+                <label class="form-label">รหัสช่าง</label>
+                <input type="text" class="form-control" value="{{ $technicain->Tech_ID }}" readonly>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-6">
+                <label class="form-label">แผนก</label>
+                    <select name="DepartmentID" class="form-select" aria-label="แผนก">
+                        <option selected>เลือกแผนก...</option>
+                        @foreach($departments as $department)
+                        <option value="{{ $department->id }}" @if($department->id == $technicain->DepartmentID) selected @endif>{{ $department->DepartmentType }}</option>
+                        @endforeach
+                    </select>
+            </div>
+        </div>
         <div class="row">
             <div class="col mb-3">
                 <label class="form-label">ชื่อ</label>
@@ -32,20 +49,12 @@
                 <input class="form-control" name="Tech_Tel" placeholder="Descriptoin" value="{{ $technicain->Tech_Tel }}">
             </div>
         </div>
-        <div class="row mb-3">
-    <div class="col">
-        <label class="form-label">แผนก</label>
-        <select name="DepartmentID" class="form-select" aria-label="แผนก">
-            <option selected>เลือกแผนก...</option>
-            @foreach($departments as $department)
-                <option value="{{ $department->id }}" @if($department->id == $technicain->DepartmentID) selected @endif>{{ $department->DepartmentType }}</option>
-            @endforeach
-        </select>
-    </div>
-</div>
         <div class="row">
-            <div class="d-grid">
-                <button class="btn btn-primary">Update</button>
+            <div class="col-1">
+                <button class="btn btn-primary">ตกลง</button>
+            </div>
+            <div class="col">
+                <a href="{{ route('technicains') }}" class="btn btn-danger">ยกเลิก</a>
             </div>
         </div>
     </form>

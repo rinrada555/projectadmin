@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('technicains', function (Blueprint $table) {
             $table->id();
+            $table->string('Tech_ID')->unique();;
             $table->string('Tech_Fname')->nullable();
             $table->string('Tech_Lname')->nullable();
             $table->string('Tech_Address')->nullable();
