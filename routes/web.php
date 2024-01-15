@@ -6,6 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TechnicianController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\CarPartController;
+use App\Http\Controllers\ClaimController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +72,28 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}', 'edit')->name('promotions.edit');
         Route::put('edit/{id}', 'update')->name('promotions.update');
         Route::delete('destroy/{id}', 'destroy')->name('promotions.destroy');
+    });
+
+    Route::controller(CarPartController::class)->prefix('car_parts')->group(function () {
+        Route::get('/car_parts', [CarPartController::class, 'index'])->name('car_parts');
+        Route::get('', 'index')->name('car_parts');
+        Route::get('create', 'create')->name('car_parts.create');
+        Route::post('store', 'store')->name('car_parts.store');
+        Route::get('show/{id}', 'show')->name('car_parts.show');
+        Route::get('edit/{id}', 'edit')->name('car_parts.edit');
+        Route::put('edit/{id}', 'update')->name('car_parts.update');
+        Route::delete('destroy/{id}', 'destroy')->name('car_parts.destroy');
+    });
+
+    Route::controller(ClaimController::class)->prefix('claims')->group(function () {
+        Route::get('/claims', [ClaimController::class, 'index'])->name('claims');
+        Route::get('', 'index')->name('claims');
+        Route::get('create', 'create')->name('claims.create');
+        Route::post('store', 'store')->name('claims.store');
+        Route::get('show/{id}', 'show')->name('claims.show');
+        Route::get('edit/{id}', 'edit')->name('claims.edit');
+        Route::put('edit/{id}', 'update')->name('claims.update');
+        Route::delete('destroy/{id}', 'destroy')->name('claims.destroy');
     });
  
     Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');

@@ -46,7 +46,7 @@ class TechnicianController extends Controller
     
         Technicain::create($validatedData);
  
-        return redirect()->route('technicains')->with('success', 'Product added successfully');
+        return redirect()->route('technicains')->with('success', 'เพิ่มข้อมูลช่างเรียบร้อย');
     }
   
     /**
@@ -86,7 +86,7 @@ class TechnicianController extends Controller
     ]);
 
     $technicain->update($validatedData);
-        return redirect()->route('technicains')->with('success', 'product updated successfully');
+        return redirect()->route('technicains')->with('success', 'อัปเดตรายการช่างเรียบร้อย');
     }
   
     /**
@@ -98,7 +98,7 @@ class TechnicianController extends Controller
   
         $technicain->delete();
   
-        return redirect()->route('technicains')->with('success', 'product deleted successfully');
+        return redirect()->route('technicains')->with('success', 'ลบรายการช่างเรียบร้อบ');
     }
 }
 

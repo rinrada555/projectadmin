@@ -54,9 +54,12 @@
                     
      
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-1">
                             <button type="submit" class="btn btn-primary">ตกลง</button>
                         </div>
+                        <div class="col">
+                                <a href="{{ route('technicains') }}" class="btn btn-danger">ยกเลิก</a>
+                            </div>
                     </div>
                 </form>
             </div>

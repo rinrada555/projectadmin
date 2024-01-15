@@ -52,7 +52,7 @@ class PromotionController extends Controller
 
         $promotion->save();
 
-        return redirect('promotions')->with('message','สร้างสินค้าแล้ว');
+        return redirect('promotions')->with('message','เพิ่มโปรโมชันเรียบร้อย');
     }
   
     /**
@@ -105,7 +105,7 @@ class PromotionController extends Controller
 
         $promotion->save();
 
-        return redirect()->route('promotions')->with('success', 'Product updated successfully');
+        return redirect()->route('promotions')->with('success', 'อัปเดตโปรโมชันเรียบร้อย');
     }
 
     public function destroy(string $id)
@@ -113,6 +113,6 @@ class PromotionController extends Controller
         $promotion = Promotion::findOrFail($id);
         $promotion->delete();
 
-        return redirect()->route('promotions')->with('success', 'Product deleted successfully');
+        return redirect()->route('promotions')->with('success', 'ลบโปรโมชันเรียบร้อย');
     }
 }

@@ -45,12 +45,12 @@
                                     </td>
                                     <td class="align-middle">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ route('technicains.show', $rs->id) }}" type="button" class="btn btn-secondary">Detail</a>
-                                            <a href="{{ route('technicains.edit', $rs->id)}}" type="button" class="btn btn-warning">Edit</a>
+                                            <a href="{{ route('technicains.show', $rs->id) }}" type="button" class="btn btn-secondary">รายละเอียด</a>
+                                            <a href="{{ route('technicains.edit', $rs->id)}}" type="button" class="btn btn-warning">แก้ไข</a>
                                             <form action="{{ route('technicains.destroy', $rs->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger m-0">Delete</button>
+                                                <button class="btn btn-danger m-0">ลบ</button>
                                             </form>
                                         </div>
                                     </td>
@@ -58,7 +58,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td class="text-center" colspan="5">Product not found</td>
+                                <td class="text-center" colspan="7">ไม่มีรายการ</td>
                             </tr>
                         @endif
                     </tbody>

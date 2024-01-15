@@ -28,7 +28,7 @@
                                 <span>ข้อมูลช่าง</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('car_parts') }}">
                                 <i class="fas fa-user mr-2"></i>
                                 <span>คลังอะไหล่</span></a>
                             </li>
@@ -38,7 +38,7 @@
                                 <span>จัดการโปรโมชัน</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('claims') }}">
                                 <i class="fas fa-user mr-2"></i>
                                 <span>จัดการบริการเคลม</span></a>
                             </li>
