@@ -43,10 +43,10 @@ class CarPartController extends Controller
         $carPart = CarPart::create($validatedData);
 
 
-        if ($carPart->Total_Part_Receive < $carPart->Total_Part_Reorder) {
-            // ส่ง Notification
-            $carPart->notify(new LowInventoryNotification($validatedData['CarPart_Name']));
-        }
+        // if ($carPart->Total_Part_Receive < $carPart->Total_Part_Reorder) {
+        //     // ส่ง Notification
+        //     $carPart->notify(new LowInventoryNotification($validatedData['CarPart_Name']));
+        // }
     
         // แปลงวันที่เป็นรูปแบบที่ถูกต้อง
         $validatedData['CarPart_Lot'] = Carbon::parse($validatedData['CarPart_Lot'])->toDateTimeString();

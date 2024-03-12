@@ -32,7 +32,7 @@
                         @if($promotion->count() > 0)
                             @foreach($promotion as $rs)
                                 <tr>
-                                    <td class="align-middle">{{ $loop->iteration }}</td>
+                                    <td class="align-middle">{{ $rs->Promotion_ID}}</td>
                                     <td class="align-middle">{{ $rs->PromotionName}}</td>
                                     <td class="align-middle">{{ $rs->PromotionDetail}}</td>
                                     <td class="align-middle">{{ $rs->PromotionStartDate}}</td>
@@ -40,11 +40,11 @@
                                     <td class="align-middle">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <a href="{{ route('promotions.show', $rs->id) }}" type="button" class="btn btn-secondary">รายละเอียด</a>
-                                            <a href="{{ route('promotions.edit', $rs->id)}}" type="button" class="btn btn-warning">แก้ไข</a>
+                                            <a href="{{ route('promotions.edit', $rs->id)}}" type="button" class="btn btn-warning"><i class="fas fa-pencil"></i> แก้ไข</a>
                                             <form action="{{ route('promotions.destroy', $rs->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger m-0">ลบ</button>
+                                                <button class="btn btn-danger m-0"><i class="fas fa-trash"></i> ลบ</button>
                                             </form>
                                         </div>
                                     </td>

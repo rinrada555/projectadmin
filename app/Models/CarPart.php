@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class CarPart extends Model
 {
+    protected $connection = 'mysql';
     use HasFactory;
     use SoftDeletes;
     use Notifiable;

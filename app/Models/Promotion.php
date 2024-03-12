@@ -9,13 +9,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Promotion extends Model
 {
 
+    protected $connection = 'mysql';
     use HasFactory;
     use SoftDeletes;
 
     protected $table = 'promotions';
     protected $fillable =[
-        'PromotinName',
-        'PromotinDetail',
+        'Promotion_ID',
+        'PromotionName',
+        'PromotionDetail',
         'PromotionImage',
         'PromotionStartDate',
         'PromotionEndDate',

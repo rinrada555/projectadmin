@@ -8,6 +8,7 @@ use App\Http\Controllers\TechnicianController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\CarPartController;
 use App\Http\Controllers\ClaimController;
+use App\Http\Controllers\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,8 @@ use App\Http\Controllers\ClaimController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[App\Http\Controllers\AuthController::class, 'login'])->name('login')->middleware('is_admin');
+
 
 Auth::routes();
 
@@ -44,15 +44,15 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
  
-    Route::controller(ProductController::class)->prefix('products')->group(function () {
-        Route::get('', 'index')->name('products');
-        Route::get('create', 'create')->name('products.create');
-        Route::post('store', 'store')->name('products.store');
-        Route::get('show/{id}', 'show')->name('products.show');
-        Route::get('edit/{id}', 'edit')->name('products.edit');
-        Route::put('edit/{id}', 'update')->name('products.update');
-        Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
-    });
+    // Route::controller(ProductController::class)->prefix('products')->group(function () {
+    //     Route::get('', 'index')->name('products');
+    //     Route::get('create', 'create')->name('products.create');
+    //     Route::post('store', 'store')->name('products.store');
+    //     Route::get('show/{id}', 'show')->name('products.show');
+    //     Route::get('edit/{id}', 'edit')->name('products.edit');
+    //     Route::put('edit/{id}', 'update')->name('products.update');
+    //     Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
+    // });
 
     Route::controller(TechnicianController::class)->prefix('technicains')->group(function () {
         Route::get('', 'index')->name('technicains');
@@ -99,4 +99,35 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');
 });
 
+
+// Route::get('/tambon', function () {
+//     $provinces = Tambon::select('province')->distinct()->get();
+//     $amphoes = Tambon::select('amphoe')->distinct()->get();
+//     $tambons = Tambon::select('tambon')->distinct()->get();
+//     return view("tambon/index", compact('provinces','amphoes','tambons'));
+// });
+
+
+Route::controller(AppointmentController::class)->prefix('appointments')->group(function () {
+    Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments');
+    Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+    Route::get('/approved', [AppointmentController::class, 'approved'])->name('approved');
+    Route::get('/delete', [AppointmentController::class, 'delete'])->name('delete');
+
+    Route::get('', 'index')->name('appointments');
+   // Route::get('create', 'create')->name('appointments.create');
+    Route::post('store', 'store')->name('appointments.store');
+    Route::get('show/{id}', 'show')->name('appointments.show');
+    Route::get('edit/{id}', 'edit')->name('appointments.edit');
+    Route::put('edit/{id}', 'update')->name('appointments.update');
+    Route::delete('destroy/{id}', 'destroy')->name('appointments.destroy');
+
+    Route::get('appointments/create/{carId}', [AppointmentController::class, 'createForCar'])
+    ->name('appointments.createForCar');
+
+    Route::post('appointments/approve/{id}', [AppointmentController::class, 'approveAppointment'])->name('appointments.approve');
+    Route::post('appointments/notapprove/{id}', [AppointmentController::class, 'notapproveAppointment'])->name('appointments.notapprove');
+
+    
+});
 

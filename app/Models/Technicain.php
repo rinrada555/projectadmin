@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Technicain extends Model
 {
+    protected $connection = 'mysql';
     use HasFactory;
     use SoftDeletes;
 

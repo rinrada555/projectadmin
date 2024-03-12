@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
+            $table->string('Promotion_ID')->unique();;
             $table->string('PromotionName')->nullable();
             $table->string('PromotionDetail')->nullable();
             $table->string('PromotionImage')->nullable();

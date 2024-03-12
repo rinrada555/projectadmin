@@ -11262,4 +11262,7 @@ body {
   background-color: var(--bs-side);
 }
 
+.error-input {
+    border: 1px solid red; /* ตั้งค่าสีเส้นขอบเป็นสีแดง */
+}
 

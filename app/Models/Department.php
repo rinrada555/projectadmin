@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Department extends Model
 {
+    protected $connection = 'mysql';
     use HasFactory;
     use SoftDeletes;
 
@@ -16,6 +17,6 @@ class Department extends Model
 
     public function technicians()
     {
-        return $this->hasMany(Technician::class, 'id');
+        return $this->hasMany(Technicain::class, 'id');
     }
 }

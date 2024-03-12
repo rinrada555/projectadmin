@@ -13,28 +13,32 @@
         @csrf
         <div class="row mb-3">
             <div class="col">
-                <input type="text" name="CarPart_Name" class="form-control" placeholder="รายการอะไหล่">
+            <label for="CarPart_Lot" class="form-label">รายการอะไหล่</label>
+                <input type="text" name="CarPart_Name" class="form-control">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input type="text" name="Unit_Price" id="unitPrice" class="form-control" placeholder="ราคาต่อหน่วย">
+            <label for="CarPart_Lot" class="form-label">ราคาต่อหน่วย</label>
+                <input type="text" name="Unit_Price" id="unitPrice" class="form-control">
                 <span id="unitPriceError" style="color: red;"></span>
             </div>
             <div class="col">
-                <input class="form-control" name="Total_Part_Receive" id="totalPartReceive" placeholder="จำนวน"></input>
+            <label for="CarPart_Lot" class="form-label">จำนวน</label>
+                <input class="form-control" name="Total_Part_Receive" id="totalPartReceive"></input>
                 <span id="totalPartReceiveError" style="color: red;"></span>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
                 <label for="CarPart_Lot" class="form-label">วันที่นำเข้า</label>
-                <input type="date" class="form-control" name="CarPart_Lot" placeholder="วันที่นำเข้า">
+                <input type="date" class="form-control" name="CarPart_Lot">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input type="text" name="Total_Part_Reorder" class="form-control" placeholder="จำนวนขั้นต่ำที่ต้องสั่ง">
+            <label for="CarPart_Lot" class="form-label">จำนวนขั้นต่ำที่ต้องสั่ง</label>
+                <input type="text" name="Total_Part_Reorder" class="form-control" id="Reorder">
                 <span id="ReorderError" style="color: red;"></span>
             </div>
         </div>
@@ -52,10 +56,11 @@
     </main>
 </div>
 </div>
-<script>
+<!-- <script>
     function validateForm() {
         var unitPrice = document.getElementById('unitPrice').value;
         var totalPartReceive = document.getElementById('totalPartReceive').value;
+        var ReorderError = document.getElementById('Reorder').value;
 
         // Check if the values are numeric
         if (isNaN(unitPrice) || isNaN(totalPartReceive)) {
@@ -71,5 +76,41 @@
             return true; // Allow form submission
         }
     }
+</script> -->
+
+<script>
+    function validateForm() {
+        var unitPrice = document.getElementById('unitPrice').value;
+        var totalPartReceive = document.getElementById('totalPartReceive').value;
+        var reorderError = document.getElementById('Reorder').value;
+
+        // Clear any previous error messages
+        document.getElementById('unitPriceError').innerText = "";
+        document.getElementById('totalPartReceiveError').innerText = "";
+        document.getElementById('ReorderError').innerText = "";
+
+        var errorCount = 0;
+
+        // Check if the values are not numeric
+        if (isNaN(unitPrice) || unitPrice.trim() === "") {
+            document.getElementById('unitPriceError').innerText = "กรุณากรอกตัวเลขเท่านั้น";
+            errorCount++;
+        }
+
+        if (isNaN(totalPartReceive) || totalPartReceive.trim() === "") {
+            document.getElementById('totalPartReceiveError').innerText = "กรุณากรอกตัวเลขเท่านั้น";
+            errorCount++;
+        }
+
+        if (isNaN(reorderError) || reorderError.trim() === "") {
+            document.getElementById('ReorderError').innerText = "กรุณากรอกตัวเลขเท่านั้น";
+            errorCount++;
+        }
+
+        // Prevent form submission if there are errors
+        return errorCount === 0;
+    }
 </script>
+
+
 @endsection

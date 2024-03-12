@@ -20,7 +20,7 @@ class CreateusersSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'admin@admin.com',
                 'is_admin' => '1',
-                'password' => bcrypt('1234')
+                'password' => bcrypt('Admin123456789')
             ],
             [
                 'name' => 'User',

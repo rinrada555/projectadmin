@@ -8,8 +8,8 @@
 <main>
     <div class="container-fluid">
     <div class="d-flex align-items-center justify-content-between">
-        <h4 class="mb-0">บริการเคลม</h4>
-        <a href="{{ route('claims.create') }}" class="btn btn-primary">เพิ่มบริการเคลม</a>
+        <h4 class="mb-0">ประกันสินค้า/บริการ</h4>
+        <a href="{{ route('claims.create') }}" class="btn btn-primary">เพิ่มประกันสินค้า/บริการ</a>
     </div>
     <hr />
     @if(Session::has('success'))

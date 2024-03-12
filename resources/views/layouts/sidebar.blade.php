@@ -18,7 +18,7 @@
                                 <span>งานเข้าซ่อม</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('appointments') }}">
                                 <i class="fas fa-user mr-2"></i>
                                 <span>ลูกค้าขอนัดหมาย</span></a>
                             </li>
@@ -40,7 +40,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('claims') }}">
                                 <i class="fas fa-user mr-2"></i>
-                                <span>จัดการบริการเคลม</span></a>
+                                <span>ประกันสินค้า/บริการ</span></a>
                             </li>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>

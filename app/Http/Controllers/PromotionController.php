@@ -33,17 +33,21 @@ class PromotionController extends Controller
         
 
         $validatedData = $request->validate([
+            'Promotion_ID' => 'required|max:4|unique:promotions',
             'PromotionName' => 'required',
             'PromotionDetail' => 'required',
             'PromotionImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'PromotionStartDate' => 'required|date',
             'PromotionEndDate' => 'required|date|after_or_equal:PromotionStartDate',
+        ],[
+            'Promotion_ID.unique' => 'ไม่สามารถใช้รหัสนี้ได้ รหัสนี้มีอยู่แล้วในระบบแล้ว' // ข้อความ error สำหรับการซ้ำ
         ]);
 
         $filename = time() . '.' . $request->file('PromotionImage')->getClientOriginalExtension();
         $request->file('PromotionImage')->move(public_path('asset/uploads/promotion/'), $filename);
         
         $promotion = new Promotion;
+        $promotion->Promotion_ID = $request->Promotion_ID;
         $promotion->PromotionName = $request->PromotionName;
         $promotion->PromotionDetail = $request->PromotionDetail;
         $promotion->PromotionImage = $filename;

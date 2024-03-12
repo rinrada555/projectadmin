@@ -10,13 +10,24 @@
                 <h4 class="mb-0">เพิ่มโปรโมชันของคุณ</h4>
                 <hr />
                 <form action="{{ route('promotions.store') }}" method="POST" enctype="multipart/form-data">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                     @csrf
                     <div class="container">
                         <form action="/promotions" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="mb-3">
-                            <label for="PromotionImage" class="form-label">รูปภาพ</label>
-                            <input type="file" class="form-control" id="promotionImage" name="PromotionImage">
+                        <div class="row mb-3">
+                            <div class="col-2">
+                                <label class="form-label">รหัสโปรโมชัน</label>
+                                <input type="text" name="Promotion_ID" class="form-control">
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="PromotionName" class="form-label">ชื่อโปรโมชัน</label>
@@ -25,6 +36,10 @@
                         <div class="mb-3">
                             <label for="PromotionDetail" class="form-label">รายละเอียดโปรโมชัน</label>
                         <textarea class="form-control" id="promotionDescription" name="PromotionDetail"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="PromotionImage" class="form-label">รูปภาพ</label>
+                            <input type="file" class="form-control" id="promotionImage" name="PromotionImage">
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
